@@ -1,6 +1,7 @@
-from Django.contrib.auth.forms import UserCreationForm
-from Django.contrib.auth.models import User
-from Django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+from django import forms
+
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(label="", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Email Address'}))
     first_name = forms.CharField(label="", max_length=100, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'First Name'}))
@@ -9,7 +10,7 @@ class SignUpForm(UserCreationForm):
 
     class Meta:
         model = User
-        field = {'username', 'first_name', 'last_name', 'email', 'password' 'password1' 'password2'}
+        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2')
 
     def __init__(self, *args, **kwargs):
         super(SignUpForm, self).__init__(*args, **kwargs)
